@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useState,
+} from "react";
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import AboutView from "./Components/About";
@@ -10,8 +13,10 @@ import "./App.css";
 import axios from "axios";
 
 const App = () => {
-  const [searchResults, setSearchResult] = useState([]);
-  const [searchText, setSearchText] = useState("");
+  const [searchResults, setSearchResult] =
+    useState([]);
+  const [searchText, setSearchText] =
+    useState("");
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -21,7 +26,10 @@ const App = () => {
         );
         setSearchResult(data.results);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error(
+          "Error fetching data:",
+          error
+        );
       }
     };
     if (searchText) {
@@ -31,18 +39,36 @@ const App = () => {
 
   return (
     <div>
-      <Navbar searchText={searchText} setSearchText={setSearchText} />
+      <Navbar
+        searchText={searchText}
+        setSearchText={setSearchText}
+      />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<AboutView />} />
         <Route
-          path="/search"
+          path='/'
+          element={<Home />}
+        />
+        <Route
+          path='/about'
+          element={<AboutView />}
+        />
+        <Route
+          path='/search'
           element={
-            <SearchView keyword={searchText} searchResults={searchResults} />
+            <SearchView
+              keyword={searchText}
+              searchResults={searchResults}
+            />
           }
         />
-        <Route path="/movies/:id" element={<MovieView />} />
-        <Route path="*" element={<Error />} />
+        <Route
+          path='/movies/:id'
+          element={<MovieView />}
+        />
+        <Route
+          path='*'
+          element={<Error />}
+        />
       </Routes>
     </div>
   );
