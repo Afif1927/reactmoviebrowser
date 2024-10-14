@@ -2,7 +2,9 @@
 
   "name": "moviebrowser",
 
-  "homepage": "https://Afif1927.github.io/reactmoviebrowser/",
+  
+    "homepage": "."
+  ,
 
   "version": "0.1.0",
 
