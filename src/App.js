@@ -8,6 +8,7 @@ import AboutView from "./Components/About";
 import SearchView from "./Components/SearchView";
 import MovieView from "./Components/MovieView";
 import Error from "./Components/Error";
+import Hero from "./Components/Hero";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
@@ -17,6 +18,8 @@ const App = () => {
     useState([]);
   const [searchText, setSearchText] =
     useState("");
+  const [IsLoading, setIsLoading] =
+    useState(true);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -35,7 +38,12 @@ const App = () => {
     if (searchText) {
       fetchMovies();
     }
+    setIsLoading(false);
   }, [searchText]);
+
+  if (IsLoading) {
+    return <Hero text='Loading...' />;
+  }
 
   return (
     <div>
